@@ -1,0 +1,1 @@
+{"methodName":"testServiceMethod","methodArgumentTypes":["java.lang.String","java.lang.Integer","com.methodinvoker.invokerbyjson.data.User"],"methodJsonArguments":["yes string",55555,"{\"firstName\":\"First Name\",\"profile\":{\"address\":\"House No.1\"}}"],"methodClass":"com.methodinvoker.invokerbyjson.util.TestService"}

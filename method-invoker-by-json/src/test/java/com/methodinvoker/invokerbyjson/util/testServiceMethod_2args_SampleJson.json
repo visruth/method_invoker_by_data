@@ -1,0 +1,1 @@
+{"methodName":"testServiceMethod","methodArgumentTypes":["java.lang.String","java.lang.Integer"],"methodJsonArguments":["yes string",55555],"methodClass":"com.methodinvoker.invokerbyjson.util.TestService"}
