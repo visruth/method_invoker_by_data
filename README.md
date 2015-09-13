@@ -25,5 +25,6 @@ TestService testService = new TestService();
 map.put(TestService.class, testService);
 
 // the following will invoke the method testServiceMethod(String, Integer, com.methodinvoker.invokerbyjson.data.User) from the given object testService.
+
 Object returned = InvokerUtil.invoke(map, jsonString); 
 
