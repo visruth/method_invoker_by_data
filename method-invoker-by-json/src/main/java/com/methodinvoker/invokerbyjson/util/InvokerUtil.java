@@ -16,6 +16,7 @@
  */
 package com.methodinvoker.invokerbyjson.util;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
@@ -31,6 +32,34 @@ public class InvokerUtil {
 
     private InvokerUtil() {
         throw new AssertionError();
+    }
+
+    /**
+     * Invokes the corresponding method from the class given by the json string.
+     *
+     * @param map
+     *            containing key as the class of the object passed as the value
+     *            and the value as the object of the given key class.
+     * @param jsonString
+     * @return the return value of the method as a json string or {@code null}
+     *         if the method return type is void or the method returns null.
+     * @throws NoSuchMethodException
+     * @throws IllegalArgumentException
+     * @author visruth
+     */
+    public static String invokeAndReturnJsonString(Map<Class<?>, Object> map,
+            String jsonString) throws NoSuchMethodException,
+            IllegalArgumentException {
+        Object result = invoke(map, jsonString);
+        if (result != null) {
+            ObjectMapper mapper = new ObjectMapper();
+            try {
+                return mapper.writeValueAsString(result);
+            } catch (IOException e) {
+                throw new IllegalArgumentException(e);
+            }
+        }
+        return null;
     }
 
     /**
