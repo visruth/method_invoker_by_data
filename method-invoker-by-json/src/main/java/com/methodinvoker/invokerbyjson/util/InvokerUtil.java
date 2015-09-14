@@ -97,9 +97,7 @@ public class InvokerUtil {
                 Object methodArg = methodJsonArguments[i];
                 if (methodArg != null) {
                     if (methodArgumentTypes[i] == String.class) {
-                        methodArguments[i] = mapper
-                                .readValue(("\"" + methodArg.toString() + "\"")
-                                        .getBytes(), methodArgumentTypes[i]);
+                        methodArguments[i] = methodArg.toString();
                     } else {
                         methodArguments[i] = mapper.readValue(methodArg
                                 .toString().getBytes(), methodArgumentTypes[i]);
