@@ -10,9 +10,9 @@ import com.methodinvoker.invokerbybson.data.InputData;
 
 import de.undercouch.bson4jackson.BsonFactory;
 
-public class InvokerUtil {
+public class InvokerBsonUtil {
 
-    private InvokerUtil() {
+    private InvokerBsonUtil() {
         throw new AssertionError();
     }
     

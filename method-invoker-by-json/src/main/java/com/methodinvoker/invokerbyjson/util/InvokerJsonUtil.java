@@ -28,9 +28,9 @@ import com.methodinvoker.invokerbyjson.data.InputData;
  * @author visruth
  *
  */
-public class InvokerUtil {
+public class InvokerJsonUtil {
 
-    private InvokerUtil() {
+    private InvokerJsonUtil() {
         throw new AssertionError();
     }
 

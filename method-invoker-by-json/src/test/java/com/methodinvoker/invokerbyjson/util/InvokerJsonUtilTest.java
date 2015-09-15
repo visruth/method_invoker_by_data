@@ -16,7 +16,7 @@ import com.methodinvoker.invokerbyjson.data.InputData;
 import com.methodinvoker.invokerbyjson.data.Profile;
 import com.methodinvoker.invokerbyjson.data.User;
 
-public class InvokerUtilTest {
+public class InvokerJsonUtilTest {
 
     @Test
     public void testName() throws Exception {
@@ -49,7 +49,7 @@ public class InvokerUtilTest {
             String jsonString = new String(byteBuffer.array());
 
             try {
-                Object returned = InvokerUtil.invoke(map, jsonString);
+                Object returned = InvokerJsonUtil.invoke(map, jsonString);
 
                 System.out.println(returned);
                 org.junit.Assert
@@ -105,7 +105,7 @@ public class InvokerUtilTest {
             String jsonString = new String(byteBuffer.array());
 
             try {
-                Object returned = InvokerUtil.invoke(map, jsonString);
+                Object returned = InvokerJsonUtil.invoke(map, jsonString);
 
                 System.out.println(returned);
                 org.junit.Assert
