@@ -18,6 +18,7 @@ package com.methodinvoker.invokerbyjson.util;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -100,7 +101,8 @@ public class InvokerJsonUtil {
                         methodArguments[i] = methodArg.toString();
                     } else {
                         methodArguments[i] = mapper.readValue(methodArg
-                                .toString().getBytes(), methodArgumentTypes[i]);
+                                .toString().getBytes(StandardCharsets.UTF_8),
+                                methodArgumentTypes[i]);
                     }
                 } else {
                     methodArguments[i] = methodArg;

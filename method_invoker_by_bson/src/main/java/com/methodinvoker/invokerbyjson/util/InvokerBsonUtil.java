@@ -3,6 +3,7 @@ package com.methodinvoker.invokerbyjson.util;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,8 +16,7 @@ public class InvokerBsonUtil {
     private InvokerBsonUtil() {
         throw new AssertionError();
     }
-    
-    
+
     /**
      * Invokes the corresponding method from the class given by the bson bytes.
      *
@@ -24,15 +24,14 @@ public class InvokerBsonUtil {
      *            containing key as the class of the object passed as the value
      *            and the value as the object of the given key class.
      * @param jsonString
-     * @return the return value of the method as a bson bytes or {@code null}
-     *         if the method return type is void or the method returns null.
+     * @return the return value of the method as a bson bytes or {@code null} if
+     *         the method return type is void or the method returns null.
      * @throws NoSuchMethodException
      * @throws IllegalArgumentException
      * @author visruth
      */
     public static byte[] invokeAndReturnBson(Map<Class<?>, Object> map,
-            byte[] bson) throws NoSuchMethodException,
-            IllegalArgumentException {
+            byte[] bson) throws NoSuchMethodException, IllegalArgumentException {
         Object result = invoke(map, bson);
         if (result != null) {
             ObjectMapper mapper = new ObjectMapper(new BsonFactory());
@@ -66,8 +65,7 @@ public class InvokerBsonUtil {
         try {
 
             ObjectMapper mapper = new ObjectMapper(new BsonFactory());
-            InputData inputDataParsed = mapper.readValue(bson,
-                    InputData.class);
+            InputData inputDataParsed = mapper.readValue(bson, InputData.class);
 
             Class<?> methodClass = inputDataParsed.getMethodClass();
             Object object = map.get(methodClass);
@@ -85,7 +83,8 @@ public class InvokerBsonUtil {
                         methodArguments[i] = methodArg.toString();
                     } else {
                         methodArguments[i] = mapper.readValue(methodArg
-                                .toString().getBytes(), methodArgumentTypes[i]);
+                                .toString().getBytes(StandardCharsets.UTF_8),
+                                methodArgumentTypes[i]);
                     }
                 } else {
                     methodArguments[i] = methodArg;
@@ -105,6 +104,4 @@ public class InvokerBsonUtil {
         }
     }
 
-    
-    
 }
