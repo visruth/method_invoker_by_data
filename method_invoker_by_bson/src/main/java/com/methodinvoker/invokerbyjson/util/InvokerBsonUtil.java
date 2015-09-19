@@ -174,4 +174,56 @@ public class InvokerBsonUtil {
         }
     }
 
+    /**
+     * converts json bytes to bson bytes
+     *
+     * @param json
+     * @return
+     */
+    public static byte[] convertJsonToBson(byte[] json) {
+
+        try {
+            org.codehaus.jackson.map.ObjectMapper jsonMapper = new org.codehaus.jackson.map.ObjectMapper();
+            com.fasterxml.jackson.databind.ObjectMapper bsonMapper = new com.fasterxml.jackson.databind.ObjectMapper(
+                    new de.undercouch.bson4jackson.BsonFactory());
+
+            Object javaObject = jsonMapper.readValue(json, Object.class);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bsonMapper.writeValue(baos, javaObject);
+            byte[] bsonBytes = baos.toByteArray();
+
+            return bsonBytes;
+        } catch (Exception e) {
+            throw new IllegalArgumentException(
+                    "The given json bytes may be invalid", e);
+        }
+
+    }
+
+    /**
+     * converts bson bytes to json bytes
+     *
+     * @param bson
+     * @return
+     */
+    public static byte[] convertToBsonJson(byte[] bson) {
+
+        try {
+            org.codehaus.jackson.map.ObjectMapper jsonMapper = new org.codehaus.jackson.map.ObjectMapper();
+            com.fasterxml.jackson.databind.ObjectMapper bsonMapper = new com.fasterxml.jackson.databind.ObjectMapper(
+                    new de.undercouch.bson4jackson.BsonFactory());
+
+            Object javaObject = bsonMapper.readValue(bson, Object.class);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            jsonMapper.writeValue(baos, javaObject);
+            byte[] jsonBytes = baos.toByteArray();
+
+            return jsonBytes;
+        } catch (Exception e) {
+            throw new IllegalArgumentException(
+                    "The given bson bytes may be invalid", e);
+        }
+
+    }
+
 }
