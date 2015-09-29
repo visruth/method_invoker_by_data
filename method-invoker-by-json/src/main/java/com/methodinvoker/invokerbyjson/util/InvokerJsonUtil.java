@@ -18,6 +18,7 @@ package com.methodinvoker.invokerbyjson.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
@@ -184,6 +185,10 @@ public class InvokerJsonUtil {
             try {
                 result.setMethodReturnValue(method.invoke(object,
                         methodArguments));
+            } catch (InvocationTargetException e) {
+                Throwable targetException = e.getTargetException();
+                result.setMethodException(targetException != null ? targetException
+                        : e);
             } catch (Throwable e) {
                 result.setMethodException(e);
             }
@@ -200,7 +205,7 @@ public class InvokerJsonUtil {
      * converts json bytes to bson bytes
      *
      * @param json
-     * @return
+     * @return BSON bytes
      */
     public static byte[] convertJsonToBson(byte[] json) {
 
@@ -226,9 +231,9 @@ public class InvokerJsonUtil {
      * converts bson bytes to json bytes
      *
      * @param bson
-     * @return
+     * @return JSON bytes
      */
-    public static byte[] convertToBsonJson(byte[] bson) {
+    public static byte[] convertBsonToJson(byte[] bson) {
 
         try {
             org.codehaus.jackson.map.ObjectMapper jsonMapper = new org.codehaus.jackson.map.ObjectMapper();
