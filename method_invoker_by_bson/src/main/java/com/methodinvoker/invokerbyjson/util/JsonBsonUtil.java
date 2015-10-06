@@ -18,8 +18,6 @@ package com.methodinvoker.invokerbyjson.util;
 
 import java.io.ByteArrayOutputStream;
 
-import com.methodinvoker.invokerbybson.data.InputData;
-
 /**
  *
  * @author Visruth CV
@@ -70,7 +68,7 @@ public class JsonBsonUtil {
             com.fasterxml.jackson.databind.ObjectMapper bsonMapper = new com.fasterxml.jackson.databind.ObjectMapper(
                     new de.undercouch.bson4jackson.BsonFactory());
 
-            InputData javaObject = bsonMapper.readValue(bson, InputData.class);
+            Object javaObject = bsonMapper.readValue(bson, Object.class);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             jsonMapper.writeValue(baos, javaObject);
             byte[] jsonBytes = baos.toByteArray();
