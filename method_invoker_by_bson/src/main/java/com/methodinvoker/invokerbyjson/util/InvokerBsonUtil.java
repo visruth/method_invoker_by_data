@@ -84,8 +84,7 @@ public class InvokerBsonUtil {
                     if (methodArgumentTypes[i] == String.class) {
                         methodArguments[i] = methodArg.toString();
                     } else {
-                        methodArguments[i] = mapper.readValue(methodArg
-                                .toString().getBytes(StandardCharsets.UTF_8),
+                        methodArguments[i] = mapper.convertValue(methodArg,
                                 methodArgumentTypes[i]);
                     }
                 } else {
@@ -142,8 +141,7 @@ public class InvokerBsonUtil {
                     if (methodArgumentTypes[i] == String.class) {
                         methodArguments[i] = methodArg.toString();
                     } else {
-                        methodArguments[i] = mapper.readValue(methodArg
-                                .toString().getBytes(StandardCharsets.UTF_8),
+                        methodArguments[i] = mapper.convertValue(methodArg,
                                 methodArgumentTypes[i]);
                     }
                 } else {
