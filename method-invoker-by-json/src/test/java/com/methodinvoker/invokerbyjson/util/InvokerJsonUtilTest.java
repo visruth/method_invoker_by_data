@@ -8,6 +8,7 @@ import java.nio.ByteBuffer;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
@@ -23,11 +24,12 @@ public class InvokerJsonUtilTest {
 
     }
 
-    @Test
+//    @Test
     public void testInvoke1() {
-
-        URL resource = getClass().getResource(
+    	
+        URL resource = InvokerJsonUtilTest.class.getResource(
                 "testServiceMethod_2args_SampleJson.json");
+        System.out.println(resource);
         String path = resource.getPath();
         System.out.println(path);
         try (
@@ -67,7 +69,7 @@ public class InvokerJsonUtilTest {
         }
     }
 
-    @Test
+//    @Test
     public void testInvoke2() {
 
         InputData inputData = new InputData();
