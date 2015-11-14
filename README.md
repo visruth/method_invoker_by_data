@@ -1,14 +1,14 @@
 # method_invoker_by_data
-This project provides utility to invoke methods in an object by the given json data.
+This project provides utility to invoke methods in an object by the given json/bson data.
 
-Repositoy details to resolve dependency by maven :-
-
+###### Repositoy details to resolve dependency by maven
+```
 <repositories>
 	<repository>
 		<id>method_invoker_by_data</id>
 		<url>https://github.com/visruth/method_invoker_by_data/raw/master</url>
 	</repository>
-</repositories>
+ </repositories>
 
 <dependencies>
 	<dependency>
@@ -17,12 +17,12 @@ Repositoy details to resolve dependency by maven :-
 		<version>1.1.0</version>
 	</dependency>
 </dependencies>
-	
+```	
 	
 Sample code :
 
 String jsonString contains :-
-
+```
 {
     "methodName": "testServiceMethod",
     "methodArgumentTypes": [
@@ -45,4 +45,4 @@ map.put(TestService.class, testService);
 // the following will invoke the method testServiceMethod(String, Integer, com.methodinvoker.invokerbyjson.data.User) from the given object testService.
 
 Object returned = InvokerUtil.invoke(map, jsonString); 
-
+```
