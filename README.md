@@ -1,6 +1,24 @@
 # method_invoker_by_data
 This project provides utility to invoke methods in an object by the given json data.
 
+Repositoy details to resolve dependency by maven :-
+
+<repositories>
+	<repository>
+		<id>method_invoker_by_data</id>
+		<url>https://github.com/visruth/method_invoker_by_data/raw/master</url>
+	</repository>
+</repositories>
+
+<dependencies>
+	<dependency>
+		<groupId>com.methodinvoker</groupId>
+		<artifactId>invoker-by-json</artifactId>
+		<version>1.1.0</version>
+	</dependency>
+</dependencies>
+	
+	
 Sample code :
 
 String jsonString contains :-
