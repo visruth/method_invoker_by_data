@@ -60,7 +60,7 @@
 
 	<distributionManagement>
 		<repository>
-			<id>maven-repository</id>
+			<id>method_invoker_by_data</id>
 			<url>${github.maven.repository}</url>
 		</repository>
 	</distributionManagement>
